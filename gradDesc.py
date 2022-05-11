@@ -30,7 +30,7 @@ def gradDesc(c,n,k,d,lam,regType):
         delta = np.zeros(n)
         i= 0
         for a in c:
-            x = phasedWave(a,n,k,d)
+            x = phasedWave.phasedWave(a,n,k,d)
             h[i] = np.sum(w*x) 
             delta += ((h[i]-c[i])*x+reg)
             i += 1
@@ -43,7 +43,7 @@ def gradDesc(c,n,k,d,lam,regType):
             lossDiffPrev = lossDiff
             alpha = tau*alpha
             for a in c:
-                x = phasedWave(a,n,k,d)
+                x = phasedWave.phasedWave(a,n,k,d)
                 h[i] = np.sum((w-alpha*delta)*x) 
                 i += 1
             newLoss =  1/(2*n)*np.sum((h-c)**2)+regLoss
